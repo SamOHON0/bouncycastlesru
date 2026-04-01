@@ -16,7 +16,7 @@
       --clay-btn:0 6px 18px rgba(255,100,180,.35),inset 0 2px 0 rgba(255,255,255,.4),inset 0 -2px 0 rgba(180,60,120,.2);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{background:#FFFCFB!important;scroll-behavior:smooth}
+    html{background:#FFFCFB!important;scroll-behavior:smooth;overflow-x:hidden}
     body{font-family:"Nunito",sans-serif;background:#FFFCFB!important;color:#3D2B4A!important;overflow-x:hidden;min-height:100vh}
     h1,h2,h3,h4,.display{font-family:"Poppins",sans-serif}
 
@@ -388,7 +388,7 @@
 
     #chat-window{
       position:fixed;bottom:180px;right:28px;z-index:501;
-      width:340px;max-height:520px;
+      width:340px;max-width:calc(100vw - 32px);max-height:520px;
       background:var(--white);border-radius:28px;
       box-shadow:var(--clay-hov);
       display:none;flex-direction:column;overflow:hidden;
@@ -457,7 +457,7 @@
 
     /* RESPONSIVE */
     @media(max-width:960px){.featured-grid{grid-template-columns:1fr 1fr}.fc.hero-card{grid-column:1/3}.fc.hero-card .fc-img{height:260px}.castle-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
-    @media(max-width:680px){nav{padding:0 16px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.hero{padding:56px 16px 48px;gap:28px}.featured-grid{grid-template-columns:1fr}.fc.hero-card{grid-column:1}.castle-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.home-castles,.why,.how,.home-cta,.pricing,.avail,.about-content,.contact-content,.castles-section,.areas-section,.faq-section,.reviews-section,.insta-strip{padding-left:16px;padding-right:16px}.cta-card{padding:48px 28px}}
+    @media(max-width:680px){.chat-bubble{right:16px;bottom:16px}nav{padding:0 16px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.hero{padding:56px 16px 48px;gap:28px}.featured-grid{grid-template-columns:1fr}.fc.hero-card{grid-column:1}.castle-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.home-castles,.why,.how,.home-cta,.pricing,.avail,.about-content,.contact-content,.castles-section,.areas-section,.faq-section,.reviews-section,.insta-strip{padding-left:16px;padding-right:16px}.cta-card{padding:48px 28px}}
   </style>
 </head>
 <body>
@@ -545,7 +545,7 @@
     <div class="stats-inner">
       <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <div style="font-size:48px">🏰</div>
-        <div class="stat-label">7 Castles in the Fleet</div>
+        <div class="stat-label">A Castle for Every Occasion</div>
       </div>
       <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <div style="font-size:48px">🚚</div>
@@ -599,7 +599,7 @@
         </div>
       </div>
     </div>
-    <div class="view-all-row"><button class="btn btn-lav" onclick="goTo('castles')">View All 7 Castles →</button></div>
+    <div class="view-all-row"><button class="btn btn-lav" onclick="goTo('castles')">View All Castles →</button></div>
   </section>
 
   <!-- INSTAGRAM MARQUEE -->
@@ -607,7 +607,7 @@
     <div class="section-header" style="padding:0 32px;margin-bottom:32px">
       <span class="eyebrow">As Seen On</span>
       <h2>@bouncycastles_r_u 📸</h2>
-      <p>Real events, real kids, real fun. Hover to pause</p>
+      <p>Real events, real kids, real fun</p>
     </div>
     <div class="marquee-wrap">
       <div class="marquee-track" id="marqueeTrack">
@@ -1193,7 +1193,7 @@ const botResponses = {
   castles: {
     patterns: ['castle','castles','what do you have','what have you got','inflatable','inflatables','options','fleet'],
     responses: [
-      "We have 7 brilliant castles in our fleet! 🏰\n\n🎖️ Total Wipeout (x3 views) — our 40ft camo obstacle course\n🕺 Total Wipeout (Full Run) — lights, music, dancing!\n🎪 Circus Circus — yellow & blue for younger kids\n🦸 Superheroes Combo — blue & orange action hero fun\n🎉 Party Obstacle Course — pink & purple run\n\nClick 'Our Castles' in the nav to see all the photos!"
+      "We have a huge range of castles in our fleet! 🏰\n\n🎖️ Total Wipeout (x3 views) — our 40ft camo obstacle course\n🕺 Total Wipeout (Full Run) — lights, music, dancing!\n🎪 Circus Circus — yellow & blue for younger kids\n🦸 Superheroes Combo — blue & orange action hero fun\n🎉 Party Obstacle Course — pink & purple run\n\nClick 'Our Castles' in the nav to see all the photos!"
     ]
   },
   wipeout: {
