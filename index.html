@@ -245,13 +245,13 @@
     /* HOW */
     .how{padding:80px 32px;background:linear-gradient(160deg,rgba(181,232,255,.09) 0%,rgba(255,181,216,.05) 100%)}
     .how-inner{max-width:1050px;margin:0 auto}
-    .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-    .step{background:var(--white);border-radius:28px;padding:28px 24px;box-shadow:var(--clay);text-align:center;transition:transform .25s,box-shadow .25s}
+    .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+    .step{background:var(--white);border-radius:22px;padding:20px 16px;box-shadow:var(--clay);text-align:center;transition:transform .25s,box-shadow .25s}
     .step:hover{transform:translateY(-8px) rotate(.8deg);box-shadow:var(--clay-hov)}
-    .step-num{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
-    .step-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;box-shadow:var(--clay)}
-    .step h3{font-size:17px;font-weight:800;margin-bottom:8px}
-    .step p{font-size:13px;font-weight:600;color:var(--mid);line-height:1.55}
+    .step-num{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+    .step-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 12px;box-shadow:var(--clay)}
+    .step h3{font-size:14px;font-weight:800;margin-bottom:0}
+    .step p{font-size:12px;font-weight:600;color:var(--mid);line-height:1.55}
 
     /* AVAILABILITY CALENDAR */
     .avail{padding:80px 32px;background:linear-gradient(135deg,rgba(255,181,216,.08),rgba(212,181,255,.08))}
@@ -346,12 +346,12 @@
     .about-text p{font-size:15px;font-weight:600;color:var(--mid);line-height:1.75;margin-bottom:16px}
     .about-photo{border-radius:32px;overflow:hidden;box-shadow:var(--clay-hov);aspect-ratio:4/3}
     .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .about-values{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-bottom:72px}
-    .value-card{background:var(--white);border-radius:24px;padding:28px 24px;box-shadow:var(--clay);transition:transform .25s,box-shadow .25s}
+    .about-values{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;margin-bottom:72px}
+    .value-card{background:var(--white);border-radius:20px;padding:20px 16px;box-shadow:var(--clay);transition:transform .25s,box-shadow .25s;text-align:center}
     .value-card:hover{transform:translateY(-7px);box-shadow:var(--clay-hov)}
-    .value-icon{font-size:36px;margin-bottom:14px;display:block}
-    .value-card h3{font-size:17px;font-weight:800;margin-bottom:8px}
-    .value-card p{font-size:13px;font-weight:600;color:var(--mid);line-height:1.6}
+    .value-icon{font-size:28px;margin-bottom:10px;display:block}
+    .value-card h3{font-size:14px;font-weight:800;margin-bottom:0}
+    .value-card p{font-size:12px;font-weight:600;color:var(--mid);line-height:1.6}
 
     /* ═══ CONTACT PAGE ═══ */
     .contact-hero{padding:80px 32px 56px;text-align:center;background:linear-gradient(180deg,rgba(212,181,255,.12) 0%,transparent 100%)}
@@ -546,8 +546,8 @@
       .contact-form-wrap{padding:24px;border-radius:24px}
       .contact-form-wrap h2{font-size:20px}
       .reviews-grid{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr 1fr;gap:14px}
-      .step{padding:22px 18px}
+      .steps{grid-template-columns:1fr 1fr;gap:12px}
+      .step{padding:16px 12px}
       .footer-inner{flex-direction:column;gap:32px}
       .footer-bottom{flex-direction:column;align-items:center;text-align:center}
       /* Chat window mobile */
@@ -877,7 +877,7 @@
       </div>
       <div class="steps">
         <div class="step reveal"><div class="step-num">Step 01</div><div class="step-icon" style="background:var(--pink)">📞</div><h3>Give Sean a Ring</h3></div>
-        <div class="step reveal"><div class="step-num">Step 02</div><div class="step-icon" style="background:var(--sky)">🚚</div><h3>We Deliver</h3><p>Sean arrives well before your guests, sets everything up, and does a full safety check.</p></div>
+        <div class="step reveal"><div class="step-num">Step 02</div><div class="step-icon" style="background:var(--sky)">🚚</div><h3>We Deliver</h3></div>
         <div class="step reveal"><div class="step-num">Step 03</div><div class="step-icon" style="background:var(--mint)">🎉</div><h3>Kids Go Wild</h3></div>
         <div class="step reveal"><div class="step-num">Step 04</div><div class="step-icon" style="background:var(--lav)">📦</div><h3>We Collect</h3></div>
       </div>
@@ -929,17 +929,105 @@
   </div>
   <div class="areas-section">
     <div class="section-header"><span class="eyebrow">Coverage</span><h2>Where We Deliver 📍</h2><p>Covering Dublin and surrounding counties</p></div>
-    <div class="pill-wrap">
-      <div class="pill" style="background:var(--pink)">Dublin City</div>
-      <div class="pill" style="background:var(--lav)">South Dublin</div>
-      <div class="pill" style="background:var(--mint)">North Dublin</div>
-      <div class="pill" style="background:var(--peach)">Kildare</div>
-      <div class="pill" style="background:var(--sky)">Meath</div>
-      <div class="pill" style="background:var(--pink)">Wicklow</div>
-      <div class="pill" style="background:var(--lav)">Louth</div>
-      <div class="pill" style="background:var(--mint)">Wexford</div>
+    <div class="map-container" style="max-width:560px;margin:0 auto 20px;position:relative">
+      <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;filter:drop-shadow(0 4px 16px rgba(100,60,120,.12))">
+        <!-- All Ireland outline (non-service) -->
+        <!-- Donegal -->
+        <path d="M120,60 L155,45 L195,50 L215,65 L225,55 L240,60 L235,80 L220,95 L200,100 L190,115 L175,110 L160,120 L140,110 L125,95 L115,80Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Derry/Londonderry -->
+        <path d="M225,55 L260,50 L280,60 L285,80 L270,95 L255,90 L235,80 L240,60Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Antrim -->
+        <path d="M280,60 L310,45 L340,50 L355,65 L350,85 L335,95 L310,100 L285,80Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Tyrone -->
+        <path d="M235,80 L255,90 L270,95 L285,80 L310,100 L300,120 L280,130 L255,125 L230,120 L220,95Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Down -->
+        <path d="M310,100 L335,95 L350,85 L360,105 L355,130 L340,145 L320,140 L300,120Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Fermanagh -->
+        <path d="M190,115 L220,95 L230,120 L255,125 L245,150 L225,155 L200,150 L185,140Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Armagh -->
+        <path d="M255,125 L280,130 L300,120 L320,140 L310,155 L290,160 L270,155 L245,150Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Monaghan -->
+        <path d="M245,150 L270,155 L290,160 L285,180 L265,185 L245,180 L230,170 L225,155Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Sligo -->
+        <path d="M120,110 L140,110 L160,120 L175,110 L190,115 L185,140 L170,155 L150,150 L130,140 L115,125Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Leitrim -->
+        <path d="M160,120 L190,115 L185,140 L200,150 L195,170 L175,175 L160,165 L155,150 L170,155 L160,135Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Cavan -->
+        <path d="M200,150 L225,155 L245,150 L245,180 L230,195 L210,195 L195,185 L195,170Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Longford -->
+        <path d="M160,165 L175,175 L195,170 L195,185 L210,195 L200,215 L180,220 L165,210 L155,195Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Mayo -->
+        <path d="M55,120 L80,110 L115,125 L130,140 L150,150 L155,150 L155,195 L140,210 L115,215 L90,200 L65,195 L50,175 L40,155Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Roscommon -->
+        <path d="M130,140 L150,150 L155,150 L160,165 L155,195 L165,210 L155,230 L140,230 L125,220 L120,200 L115,215 L120,200 L125,185 L135,170Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Westmeath -->
+        <path d="M165,210 L180,220 L200,215 L210,195 L230,195 L240,215 L235,235 L215,245 L195,240 L175,240 L155,230Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Galway -->
+        <path d="M40,195 L65,195 L90,200 L115,215 L125,220 L140,230 L155,230 L175,240 L170,265 L155,285 L135,290 L110,280 L85,275 L60,260 L40,240 L30,220Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Offaly -->
+        <path d="M175,240 L195,240 L215,245 L235,235 L250,250 L245,275 L225,280 L205,275 L185,270Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Laois -->
+        <path d="M225,280 L245,275 L250,250 L270,255 L285,270 L280,295 L260,300 L240,295Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Clare -->
+        <path d="M60,260 L85,275 L110,280 L135,290 L130,310 L115,330 L95,335 L75,325 L55,305 L45,285Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Tipperary -->
+        <path d="M130,310 L155,285 L170,265 L185,270 L205,275 L225,280 L240,295 L260,300 L255,325 L240,345 L220,350 L195,345 L170,340 L150,330 L135,325Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Limerick -->
+        <path d="M75,325 L95,335 L115,330 L130,310 L135,325 L150,330 L145,350 L125,365 L105,360 L85,350 L70,340Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Kerry -->
+        <path d="M25,310 L45,285 L55,305 L75,325 L70,340 L85,350 L80,375 L60,395 L35,390 L15,370 L10,345Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Cork -->
+        <path d="M80,375 L85,350 L105,360 L125,365 L145,350 L170,340 L195,345 L220,350 L235,360 L225,385 L205,405 L180,415 L155,420 L130,415 L105,405 L85,395Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Waterford -->
+        <path d="M220,350 L240,345 L255,325 L275,330 L290,345 L285,370 L265,380 L245,375 L225,385 L235,360Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Kilkenny -->
+        <path d="M255,325 L260,300 L280,295 L300,305 L310,325 L295,340 L275,330Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+        <!-- Carlow -->
+        <path d="M300,305 L315,295 L330,305 L325,325 L310,325Z" fill="#EDE8F0" stroke="white" stroke-width="2" class="county"/>
+
+        <!-- SERVICE AREA COUNTIES (highlighted) -->
+        <!-- Louth -->
+        <path d="M285,180 L290,160 L310,155 L330,165 L340,180 L335,200 L320,205 L300,200 L290,195Z" fill="var(--lav)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Louth">
+          <title>Louth</title>
+        </path>
+        <!-- Meath -->
+        <path d="M230,195 L245,180 L265,185 L285,180 L290,195 L300,200 L320,205 L315,225 L300,240 L280,235 L260,240 L240,215Z" fill="var(--sky)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Meath">
+          <title>Meath</title>
+        </path>
+        <!-- Dublin -->
+        <path d="M300,200 L320,205 L335,200 L345,215 L350,240 L340,260 L325,265 L310,255 L300,240 L315,225Z" fill="var(--pink)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Dublin">
+          <title>Dublin</title>
+        </path>
+        <!-- Kildare -->
+        <path d="M240,215 L260,240 L280,235 L300,240 L310,255 L295,270 L270,255 L250,250 L235,235Z" fill="var(--peach)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Kildare">
+          <title>Kildare</title>
+        </path>
+        <!-- Wicklow -->
+        <path d="M310,255 L325,265 L340,260 L350,280 L345,310 L330,325 L315,295 L300,305 L295,270Z" fill="var(--mint)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Wicklow">
+          <title>Wicklow</title>
+        </path>
+        <!-- Wexford -->
+        <path d="M315,295 L330,305 L330,325 L345,310 L360,320 L370,350 L360,375 L340,385 L320,375 L295,340 L310,325Z" fill="var(--lav)" stroke="white" stroke-width="2.5" class="county service-county" data-county="Wexford">
+          <title>Wexford</title>
+        </path>
+
+        <!-- Dublin marker -->
+        <circle cx="330" cy="235" r="6" fill="var(--text)" opacity=".7"/>
+        <text x="330" y="230" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="900" font-size="11" fill="var(--text)" opacity=".8">Dublin</text>
+
+        <!-- Legend -->
+        <rect x="15" y="530" width="16" height="16" rx="4" fill="var(--pink)" stroke="white" stroke-width="1"/>
+        <text x="38" y="543" font-family="Nunito,sans-serif" font-weight="700" font-size="12" fill="#6B5478">We deliver here</text>
+        <rect x="145" y="530" width="16" height="16" rx="4" fill="#EDE8F0" stroke="white" stroke-width="1"/>
+        <text x="168" y="543" font-family="Nunito,sans-serif" font-weight="700" font-size="12" fill="#6B5478">Ask Sean!</text>
+      </svg>
+      <style>
+        .service-county{transition:filter .2s,transform .2s;transform-origin:center;cursor:pointer;filter:brightness(1)}
+        .service-county:hover{filter:brightness(1.08) drop-shadow(0 0 8px rgba(100,60,120,.3));transform:scale(1.02)}
+        .county{transition:fill .2s}
+      </style>
     </div>
-    <p style="font-size:14px;font-weight:600;color:var(--mid)">Not sure if we cover your area? Give Sean a ring and he will let you know.</p>
+    <p style="font-size:14px;font-weight:600;color:var(--mid);text-align:center">Not sure if we cover your area? Give Sean a ring and he will let you know.</p>
   </div>
   <div class="faq-section">
     <div class="section-header"><span class="eyebrow">Questions</span><h2>FAQs 💬</h2><p>Quick answers to the most common questions</p></div>
@@ -970,9 +1058,9 @@
     </div>
     <div class="section-header" style="margin-bottom:32px"><span class="eyebrow">Our Values</span><h2>What We Stand For</h2></div>
     <div class="about-values">
-      <div class="value-card reveal"><span class="value-icon">🤝</span><h3>Reliability</h3><p>When you book a date, that date is locked in. Sean has never missed a booking and is not about to start.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🤝</span><h3>Reliability</h3></div>
       <div class="value-card reveal"><span class="value-icon">🧼</span><h3>Quality</h3></div>
-      <div class="value-card reveal"><span class="value-icon">💬</span><h3>Honesty</h3><p>Straight answers, upfront pricing, no hidden charges. What Sean quotes you is what you pay. Simple as that.</p></div>
+      <div class="value-card reveal"><span class="value-icon">💬</span><h3>Honesty</h3></div>
       <div class="value-card reveal"><span class="value-icon">❤️</span><h3>Care</h3></div>
     </div>
     <div class="section-header" style="margin-bottom:32px"><span class="eyebrow">Testimonials</span><h2>What People Say ⭐</h2></div>
