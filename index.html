@@ -432,14 +432,16 @@
 
     #chat-window{
       position:fixed;bottom:180px;right:28px;z-index:501;
-      width:340px;max-width:calc(100vw - 32px);max-height:520px;
+      width:340px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 200px);
       background:var(--white);border-radius:28px;
       box-shadow:var(--clay-hov);
-      display:none;flex-direction:column;overflow:hidden;
-      animation:chatSlideUp .3s cubic-bezier(.34,1.56,.64,1);
+      display:flex;flex-direction:column;overflow:hidden;
+      transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;visibility:hidden;
+      transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s ease,visibility .2s;
     }
-    #chat-window.open{display:flex}
-    @keyframes chatSlideUp{from{transform:translateY(20px) scale(.95);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+    #chat-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto;visibility:visible}
+    #chat-backdrop{position:fixed;inset:0;z-index:599;background:rgba(0,0,0,.3);backdrop-filter:blur(2px);opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;display:none}
+    #chat-backdrop.open{opacity:1;pointer-events:auto;visibility:visible}
     .chat-header{
       background:linear-gradient(135deg,var(--pink),var(--lav));
       padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;
@@ -451,7 +453,7 @@
     .chat-header-close:hover{background:rgba(61,43,74,.1)}
     .chat-online{width:10px;height:10px;border-radius:50%;background:#16a34a;border:2px solid white;position:absolute;bottom:0;right:0}
 
-    .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+    .chat-messages{flex:1;min-height:0;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
     .chat-messages::-webkit-scrollbar{width:4px}
     .chat-messages::-webkit-scrollbar-track{background:transparent}
     .chat-messages::-webkit-scrollbar-thumb{background:rgba(100,60,120,.2);border-radius:2px}
@@ -465,8 +467,8 @@
     .msg-time{font-size:10px;font-weight:600;color:var(--soft);padding:0 4px}
     .msg.user .msg-time{text-align:right}
 
-    .chat-typing{align-self:flex-start;display:none}
-    .chat-typing.show{display:flex}
+    .chat-typing{align-self:flex-start;max-height:0;overflow:hidden;opacity:0;transition:max-height .2s ease,opacity .2s ease}
+    .chat-typing.show{max-height:50px;opacity:1}
     .typing-bubble{background:rgba(255,181,216,.15);padding:12px 16px;border-radius:18px;border-bottom-left-radius:4px;display:flex;gap:5px;align-items:center}
     .typing-dot{width:7px;height:7px;border-radius:50%;background:var(--pink);animation:typingDot 1.2s ease-in-out infinite}
     .typing-dot:nth-child(2){animation-delay:.2s}
@@ -551,7 +553,8 @@
       .footer-inner{flex-direction:column;gap:32px}
       .footer-bottom{flex-direction:column;align-items:center;text-align:center}
       /* Chat window mobile */
-      #chat-window{bottom:0;right:0;left:0;width:100%;max-width:100%;max-height:100vh;max-height:100dvh;border-radius:20px 20px 0 0;z-index:600}
+      #chat-window{bottom:0;right:0;left:0;width:100%;max-width:100%;height:100%;max-height:100vh;max-height:100dvh;border-radius:20px 20px 0 0;z-index:600}
+      #chat-backdrop{display:block}
       #chat-toggle{bottom:96px;right:16px;width:54px;height:54px;font-size:24px}
       #wa-btn{bottom:28px;right:16px;width:54px;height:54px;font-size:26px}
       .wa-tooltip,.chat-tooltip{display:none}
@@ -1024,6 +1027,8 @@
   <div class="chat-tooltip">Chat with us!</div>
 </div>
 
+<div id="chat-backdrop" onclick="toggleChat()"></div>
+
 <div id="chat-window">
   <div class="chat-header">
     <div style="position:relative">
@@ -1331,7 +1336,7 @@ const botResponses = {
   price: {
     patterns: ['price','prices','pricing','cost','how much','quote','rates','charge','fee','cheap','expensive','afford'],
     responses: [
-      "Great question! 💰 We don't list set prices because every event is a bit different, depending on your location, which castle, and how long you need it.\n\nThe best thing to do is give Sean a quick call or text on 086 855 0485. he'll sort you out with a fair quote straight away. No hidden fees, no surprises!",
+      "Great question! 💰 We don't list set prices because every event is a bit different, depending on your location, which castle, and how long you need it.\n\nThe best thing to do is give Sean a quick call or text on 086 855 0485 and he'll sort you out with a fair quote straight away. No hidden fees, no surprises!",
       "Pricing depends on which castle and your location. 📞 Give Sean a ring on 086 855 0485 and he'll give you a straight answer. He's sound to deal with!"
     ]
   },
@@ -1350,7 +1355,7 @@ const botResponses = {
     ]
   },
   booking: {
-    patterns: ['book','booking','reserve','how do i','how to','enquire','enquiry','available','availability','free','date'],
+    patterns: ['book','booking','reserve','how do i book','how to book','enquire','enquiry','available','availability','free date','check date','next available'],
     responses: [
       "Booking is dead easy! 📅\n\n1️⃣ Give Sean a call or text: 086 855 0485\n2️⃣ Tell him your date and which castle you want\n3️⃣ He'll confirm availability and give you a quote\n4️⃣ Job done!\n\nYou can also fill in the enquiry form on this page and Sean will get back to you fast. He's always quick to reply!",
       "The easiest way to book is to call or text Sean directly on 086 855 0485. 📞 He'll sort you out in minutes!"
@@ -1371,7 +1376,7 @@ const botResponses = {
   garden: {
     patterns: ['garden','space','size','how big','dimensions','room','fit'],
     responses: [
-      "Great question! Most of our castles need a flat area of at least 5m x 5m. 📐\n\nThe Total Wipeout obviously needs quite a bit more. it's 40ft long! When you book, Sean will ask about your garden or venue to make sure everything fits safely before he loads up the van."
+      "Great question! Most of our castles need a flat area of at least 5m x 5m. 📐\n\nThe Total Wipeout obviously needs quite a bit more, it's 40ft long! When you book, Sean will ask about your garden or venue to make sure everything fits safely before he loads up the van."
     ]
   },
   power: {
@@ -1381,9 +1386,9 @@ const botResponses = {
     ]
   },
   duration: {
-    patterns: ['long','hours','how long','hire period','full day','overnight','weekend'],
+    patterns: ['how long','hours','hire period','full day','overnight','weekend','half day','all day','duration'],
     responses: [
-      "Our standard hire is a full day. plenty of time for a proper party! ⏰\n\nWeekend hires and multi-day options are also available at great rates. Just let Sean know what you need when you're enquiring and he'll work something out for you!"
+      "Our standard hire is a full day, plenty of time for a proper party! ⏰\n\nWeekend hires and multi-day options are also available at great rates. Just let Sean know what you need when you're enquiring and he'll work something out for you!"
     ]
   },
   contact: {
@@ -1399,7 +1404,7 @@ const botResponses = {
     ]
   },
   thanks: {
-    patterns: ['thanks','thank you','cheers','brilliant','great','perfect','legend','sound','deadly'],
+    patterns: ['thanks','thank you','cheers','brilliant','perfect','legend','sound','deadly','class','lovely'],
     responses: [
       "No bother at all! 😊 If you have any other questions just ask. And whenever you're ready to book, give Sean a ring on 086 855 0485!",
       "Happy to help! 🏰 Anything else you want to know? And when you're ready, Sean's on 086 855 0485!",
@@ -1408,7 +1413,7 @@ const botResponses = {
   },
   default: [
     "Good question! 🤔 For the most accurate answer, it's best to give Sean a ring directly on 086 855 0485. He'll sort you out straight away!",
-    "I'm not 100% sure on that one! 😅 Best to call Sean on 086 855 0485. he'll have the answer for you instantly.",
+    "I'm not 100% sure on that one! 😅 Best to call Sean on 086 855 0485, he'll have the answer for you instantly.",
     "For that one, Sean's your man! 📞 Give him a ring on 086 855 0485 and he'll sort it out.",
     "That's a great question for Sean himself! 🏰 Ring him on 086 855 0485 for the straight answer."
   ]
@@ -1416,9 +1421,28 @@ const botResponses = {
 
 function findBotResponse(input) {
   const lower = input.toLowerCase().trim();
-  for (const [key, data] of Object.entries(botResponses)) {
-    if (key === 'default') continue;
-    if (data.patterns.some(p => lower.includes(p))) {
+  // Use word boundary matching to prevent false positives
+  // e.g. "hi" should not match "hire", "this", "which"
+  function matchesPattern(text, pattern) {
+    // Multi-word patterns: just check includes (already specific enough)
+    if (pattern.includes(' ')) return text.includes(pattern);
+    // Single-word patterns: use word boundary regex
+    const re = new RegExp('\\b' + pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+    return re.test(text);
+  }
+
+  // Check categories in priority order (specific before generic)
+  const checkOrder = [
+    'greetings', 'wipeout', 'disco', 'castles',
+    'price', 'delivery', 'areas', 'safety', 'rain',
+    'power', 'garden', 'duration', 'booking',
+    'events', 'contact', 'thanks'
+  ];
+
+  for (const key of checkOrder) {
+    const data = botResponses[key];
+    if (!data || !data.patterns) continue;
+    if (data.patterns.some(p => matchesPattern(lower, p))) {
       const resps = data.responses;
       return resps[Math.floor(Math.random() * resps.length)];
     }
@@ -1429,17 +1453,30 @@ function findBotResponse(input) {
 
 function toggleChat() {
   const win = document.getElementById("chat-window");
-  win.classList.toggle("open");
-  if (win.classList.contains("open")) {
-    document.body.style.overflow = "hidden";
-    setTimeout(() => document.getElementById("chatInput").focus(), 300);
-  } else {
+  const backdrop = document.getElementById("chat-backdrop");
+  const isOpen = win.classList.contains("open");
+  if (isOpen) {
+    win.classList.remove("open");
+    backdrop.classList.remove("open");
     document.body.style.overflow = "";
+  } else {
+    win.classList.add("open");
+    backdrop.classList.add("open");
+    // Only lock body scroll on mobile where chat is fullscreen
+    if (window.innerWidth <= 680) {
+      document.body.style.overflow = "hidden";
+    }
+    setTimeout(() => document.getElementById("chatInput").focus(), 300);
   }
 }
 
 function getTime() {
   return new Date().toLocaleTimeString("en-IE", {hour:"2-digit", minute:"2-digit"});
+}
+
+function scrollChatToBottom() {
+  const msgs = document.getElementById("chatMessages");
+  requestAnimationFrame(() => { msgs.scrollTop = msgs.scrollHeight; });
 }
 
 function appendMsg(text, type) {
@@ -1450,36 +1487,69 @@ function appendMsg(text, type) {
   const formatted = text.replace(/\n/g, "<br>");
   div.innerHTML = `<div class="msg-bubble">${formatted}</div><div class="msg-time">${getTime()}</div>`;
   msgs.insertBefore(div, typing);
-  msgs.scrollTop = msgs.scrollHeight;
+  scrollChatToBottom();
 }
 
 function showTyping() {
-  const t = document.getElementById("chatTyping");
-  t.classList.add("show");
-  document.getElementById("chatMessages").scrollTop = 99999;
+  document.getElementById("chatTyping").classList.add("show");
+  scrollChatToBottom();
 }
 function hideTyping() {
   document.getElementById("chatTyping").classList.remove("show");
 }
 
+let chatSending = false;
 function sendChat() {
+  if (chatSending) return;
   const input = document.getElementById("chatInput");
   const text = input.value.trim();
   if (!text) return;
+  chatSending = true;
   input.value = "";
   appendMsg(text, "user");
-  document.getElementById("chatQuick").style.display = "none";
+  // Hide quick replies after first real message but keep them accessible
+  const quick = document.getElementById("chatQuick");
+  if (quick.dataset.used !== "1") {
+    quick.dataset.used = "1";
+    quick.style.display = "none";
+  }
   showTyping();
   const delay = 800 + Math.random() * 700;
   setTimeout(() => {
     hideTyping();
     appendMsg(findBotResponse(text), "bot");
+    chatSending = false;
   }, delay);
 }
 
 function quickMsg(text) {
   document.getElementById("chatInput").value = text;
   sendChat();
+}
+
+// Close chat on Escape
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && document.getElementById("chat-window").classList.contains("open")) {
+    // Don't close if lightbox is open (that handler runs separately)
+    if (!document.getElementById("lightbox").classList.contains("open")) {
+      toggleChat();
+    }
+  }
+});
+
+// Handle mobile resize (keyboard open/close)
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", () => {
+    if (document.getElementById("chat-window").classList.contains("open") && window.innerWidth <= 680) {
+      const vh = window.visualViewport.height;
+      document.getElementById("chat-window").style.height = vh + "px";
+    }
+  });
+  window.visualViewport.addEventListener("scroll", () => {
+    if (document.getElementById("chat-window").classList.contains("open") && window.innerWidth <= 680) {
+      document.getElementById("chat-window").style.bottom = "0px";
+    }
+  });
 }
 
 // ── SET ACTIVE NAV ──
