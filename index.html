@@ -377,6 +377,25 @@
     .form-submit{width:100%;margin-top:8px}
     .form-success{display:none;background:var(--mint);border-radius:16px;padding:20px;text-align:center;font-weight:700;font-size:15px;color:var(--text);margin-top:16px;animation:popIn .3s ease}
 
+    /* ═══ BOOK PAGE ═══ */
+    .book-hero{padding:72px 32px 48px;text-align:center;background:linear-gradient(180deg,rgba(255,181,216,.14) 0%,transparent 100%)}
+    .book-hero h1{font-size:clamp(38px,6vw,68px);margin-bottom:14px}
+    .book-hero p{font-size:18px;font-weight:600;color:var(--mid);max-width:500px;margin:0 auto 0}
+    .book-content{padding:0 32px 80px;max-width:800px;margin:0 auto}
+    .book-frame-wrap{
+      background:var(--white);border-radius:32px;
+      box-shadow:var(--clay-hov);
+      padding:32px;
+      position:relative;overflow:hidden;
+    }
+    .book-frame-wrap::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--pink),var(--lav),var(--sky));
+    }
+    .book-frame-wrap iframe{display:block;border-radius:16px;overflow:hidden}
+    .book-trust{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:32px}
+    .book-trust-chip{background:var(--white);border-radius:20px;padding:10px 18px;box-shadow:var(--clay);font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px}
+
     /* MAP EMBED */
     .map-wrap{border-radius:24px;overflow:hidden;box-shadow:var(--clay);margin-top:24px;height:240px;background:rgba(181,232,255,.2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}
     .map-wrap p{font-weight:700;font-size:14px;color:var(--mid)}
@@ -484,6 +503,23 @@
     .chat-input:focus{border-color:var(--pink)}
     .chat-send{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--lav));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:var(--clay-btn);transition:transform .15s,box-shadow .15s;flex-shrink:0}
     .chat-send:hover{transform:scale(1.1);box-shadow:var(--clay-hov)}
+
+    /* ═══ BOOK NOW PAGE ═══ */
+    .book-hero{padding:80px 32px 48px;text-align:center;background:linear-gradient(180deg,rgba(255,181,216,.14) 0%,transparent 100%)}
+    .book-hero h1{font-size:clamp(40px,6vw,72px);margin-bottom:14px}
+    .book-hero p{font-size:18px;font-weight:600;color:var(--mid);max-width:520px;margin:0 auto}
+    .book-section{padding:0 32px 80px;max-width:800px;margin:0 auto}
+    .book-card{background:var(--white);border-radius:32px;padding:40px;box-shadow:var(--clay-hov);overflow:hidden}
+    .book-card-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+    .book-card-icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--pink),var(--lav));display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--clay-btn);flex-shrink:0}
+    .book-card-header h2{font-size:22px;font-weight:900;margin-bottom:3px}
+    .book-card-header p{font-size:14px;font-weight:600;color:var(--mid)}
+    .book-iframe-wrap{border-radius:20px;overflow:hidden;background:rgba(255,181,216,.06);border:2px solid rgba(255,181,216,.2);position:relative}
+    .book-iframe-wrap iframe{display:block}
+    .book-trust{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+    .book-trust-item{display:flex;align-items:center;gap:8px;background:var(--white);border-radius:50px;padding:10px 18px;box-shadow:var(--clay);font-weight:700;font-size:13px;color:var(--mid)}
+    .book-trust-item span{font-size:16px}
+    @media(max-width:680px){.book-card{padding:20px;border-radius:24px}.book-section{padding:0 16px 60px}}
 
     /* FOOTER */
     footer{background:var(--text);color:rgba(255,255,255,.65);padding:56px 32px;position:relative;z-index:1}
@@ -628,6 +664,7 @@
     <li><a onclick="goTo('castles')" data-page="castles">Our Castles</a></li>
     <li><a onclick="goTo('about')" data-page="about">About</a></li>
     <li><a onclick="goTo('contact')" data-page="contact">Contact</a></li>
+    <li><a onclick="goTo('book')" data-page="book">Book Now</a></li>
   </ul>
   <a href="tel:0868550485" class="nav-cta">📞 086 855 0485</a>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -639,6 +676,7 @@
   <a onclick="goTo('castles');toggleMenu()">🏰 Our Castles</a>
   <a onclick="goTo('about');toggleMenu()">👋 About</a>
   <a onclick="goTo('contact');toggleMenu()">📞 Contact</a>
+  <a onclick="goTo('book');toggleMenu()">🎉 Book Now</a>
   <a href="tel:0868550485" style="background:linear-gradient(135deg,var(--pink),var(--lav));color:var(--text);text-align:center;border-radius:50px;font-weight:800;margin-top:8px;padding:14px 16px">📞 Call Sean: 086 855 0485</a>
 </div>
 
@@ -1021,6 +1059,25 @@
   </div>
 </div>
 
+<div class="page" id="page-book">
+  <div class="book-hero">
+    <h1>Book Your Castle 🏰</h1>
+    <p>Pick your date, choose your castle, and get it locked in. Sean will confirm within the hour.</p>
+  </div>
+  <div class="book-content">
+    <div class="book-trust reveal">
+      <div class="book-trust-chip">✅ Instant availability check</div>
+      <div class="book-trust-chip">🚚 Free delivery in Dublin</div>
+      <div class="book-trust-chip">🔒 Secure booking</div>
+      <div class="book-trust-chip">📞 Confirmed by Sean personally</div>
+    </div>
+    <div class="book-frame-wrap reveal">
+      <iframe src="https://rental-booking-eight.vercel.app/embed/2857415e-1868-4b16-b047-284b24ddb991" width="100%" height="720" style="border:0;border-radius:16px"></iframe>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:14px;font-weight:600;color:var(--soft)">Prefer to talk? Ring or text Sean directly on <a href="tel:0868550485" style="color:var(--text);font-weight:800">086 855 0485</a></p>
+  </div>
+</div>
+
 <!-- CHATBOT -->
 <div id="chat-toggle" onclick="toggleChat()">
   🏰
@@ -1071,6 +1128,34 @@
 </div>
 
 <!-- FOOTER -->
+<div class="page" id="page-book">
+  <div class="book-hero">
+    <span class="section-header eyebrow">Online Booking</span>
+    <h1>Book Your <em>Castle</em> 🎉</h1>
+    <p>Pick your date, choose your castle, and secure your booking in minutes.</p>
+  </div>
+  <div class="book-section">
+    <div class="book-card reveal">
+      <div class="book-card-header">
+        <div class="book-card-icon">📅</div>
+        <div>
+          <h2>Check Availability &amp; Book</h2>
+          <p>Select a date and castle below to get started</p>
+        </div>
+      </div>
+      <div class="book-iframe-wrap">
+        <iframe src="https://rental-booking-eight.vercel.app/embed/2857415e-1868-4b16-b047-284b24ddb991" width="100%" height="720" style="border:0;max-width:100%;"></iframe>
+      </div>
+    </div>
+    <div class="book-trust reveal">
+      <div class="book-trust-item"><span>🔒</span> Secure Booking</div>
+      <div class="book-trust-item"><span>⚡</span> Instant Confirmation</div>
+      <div class="book-trust-item"><span>📞</span> Sean on 086 855 0485</div>
+      <div class="book-trust-item"><span>✅</span> Free Delivery &amp; Setup</div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1084,7 +1169,7 @@
     </div>
     <div class="footer-col"><h4>Castles</h4><ul><li><a onclick="goTo('castles')">Total Wipeout</a></li><li><a onclick="goTo('castles')">Disco Dome</a></li><li><a onclick="goTo('castles')">Circus Circus</a></li><li><a onclick="goTo('castles')">Party Obstacle Course</a></li><li><a onclick="goTo('castles')">Superheroes Combo</a></li></ul></div>
     <div class="footer-col"><h4>Events</h4><ul><li><a onclick="goTo('castles')">Birthday Parties</a></li><li><a onclick="goTo('castles')">Communions</a></li><li><a onclick="goTo('castles')">Confirmations</a></li><li><a onclick="goTo('castles')">Corporate Family Days</a></li><li><a onclick="goTo('castles')">School Fetes</a></li></ul></div>
-    <div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="goTo('home')">Home</a></li><li><a onclick="goTo('castles')">Our Castles</a></li><li><a onclick="goTo('about')">About Sean</a></li><li><a onclick="goTo('contact')">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Navigate</h4><ul><li><a onclick="goTo('home')">Home</a></li><li><a onclick="goTo('castles')">Our Castles</a></li><li><a onclick="goTo('about')">About Sean</a></li><li><a onclick="goTo('contact')">Contact</a></li><li><a onclick="goTo('book')">Book Now</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span>© 2024 Bouncy Castles R U, Sean Neill. All rights reserved.</span><span>Made with 💛 in Ireland</span></div>
 </footer>
