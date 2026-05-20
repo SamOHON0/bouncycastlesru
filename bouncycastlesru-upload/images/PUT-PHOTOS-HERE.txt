@@ -1,0 +1,10 @@
+Put Sean's photos in this folder before deploying.
+
+The site expects files named:
+  img-01.jpg  through  img-21.jpg
+
+These are the same filenames the old site used, so if you have
+the old images folder, just copy those files in here and delete
+this text file.
+
+Without these images the castle photos and gallery will be blank.
