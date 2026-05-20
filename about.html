@@ -414,6 +414,12 @@
     .about-text p{font-size:15px;font-weight:600;color:var(--mid);line-height:1.75;margin-bottom:16px}
     .about-photo{border-radius:32px;overflow:hidden;box-shadow:var(--clay-hov);aspect-ratio:4/3}
     .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .about-features{background:var(--white);border-radius:32px;padding:36px 32px;box-shadow:var(--clay-hov)}
+    .about-features h3{font-size:22px;font-weight:900;margin-bottom:20px}
+    .about-features ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+    .about-features li{display:flex;align-items:flex-start;gap:14px;font-size:15px;font-weight:600;color:var(--dark);line-height:1.5}
+    .about-features li .check{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ffb5d8,#b5e8ff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;box-shadow:var(--clay)}
+    .about-features li .txt{padding-top:3px}
     .about-values{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:72px;justify-content:center}
     .value-card{background:var(--white);border-radius:20px;padding:20px 16px;box-shadow:var(--clay);transition:transform .25s,box-shadow .25s;text-align:center;width:140px}
     .value-card:hover{transform:translateY(-7px);box-shadow:var(--clay-hov)}
@@ -727,7 +733,17 @@
         <p>Whether it is a backyard birthday party in Bray for ten kids or a school fete in Arklow with hundreds running around, Sean treats every Wicklow event the same. The details matter.</p>
         <button class="btn btn-pink" onclick="goTo('contact')" style="margin-top:8px">Get in Touch →</button>
       </div>
-      <div class="about-photo reveal-right"><img src="images/img-13.jpg" alt="Bouncy castle set up at a party in Wicklow"/></div>
+      <div class="about-features reveal-right">
+        <h3>What's Included</h3>
+        <ul>
+          <li><span class="check">✓</span><span class="txt">Free delivery &amp; collection across County Wicklow</span></li>
+          <li><span class="check">✓</span><span class="txt">Setup and takedown done by Sean himself</span></li>
+          <li><span class="check">✓</span><span class="txt">Castles sanitised between every single hire</span></li>
+          <li><span class="check">✓</span><span class="txt">Fully insured and PIPA safety tested</span></li>
+          <li><span class="check">✓</span><span class="txt">Sean's direct number, reachable any time</span></li>
+          <li><span class="check">✓</span><span class="txt">Weather call ahead of your event if needed</span></li>
+        </ul>
+      </div>
     </div>
     <div class="section-header" style="margin-bottom:32px"><span class="eyebrow">Our Values</span><h2>What We Stand For</h2></div>
     <div class="about-values">
