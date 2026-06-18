@@ -32,3 +32,6 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# local source drop (not deployed)
+whatsappstuff/
